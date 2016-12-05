@@ -1,16 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  FormControl
+} from '@angular/forms';
+
 import { Article } from './article/article.model.ts';
+
+function linkValidator(control: FormControl): { [s: string]: boolean } {
+  if (!control.value.match(/(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/)) {
+    return {invalidLink: true};
+  }
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   articles: Article[];
   newArticle: Article;
+  myForm: FormGroup;
+  title: AbstractControl;
+  link: AbstractControl;
 
-  constructor() {
+  constructor(
+    private fb: FormBuilder
+  ) {
     this.articles = [
       new Article('Angular 2', 'http://angular.io', 3),
       new Article('Fullstack', 'http://fullstack.io', 2),
@@ -20,10 +39,21 @@ export class AppComponent {
     this.newArticle = new Article();
   }
 
-  addArticle(): boolean {
-    console.log(this.newArticle);
-    this.articles.push(new Article(this.newArticle.title, this.newArticle.link, 0));
-    this.newArticle = new Article();
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      title: ['', Validators.required],
+      link: ['', Validators.compose([
+        Validators.required, linkValidator])
+      ]
+    });
+
+    this.title = this.myForm.controls['title'];
+    this.link = this.myForm.controls['link'];
+  }
+
+  addArticle(article): boolean {
+    this.articles.push(new Article(article.title, article.link, 0));
+    this.myForm.reset();
     return false;
   }
 

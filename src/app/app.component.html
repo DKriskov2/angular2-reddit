@@ -1,27 +1,25 @@
 <form
-  #articleForm="ngForm"
-  (submit)="addArticle()"
+  [formGroup]="myForm"
+  (submit)="addArticle(myForm.value)"
   class="ui large form segment">
   <h3 class="ui header">Add a Link</h3>
 
   <div class="field">
     <label for="title">Title:</label>
     <input name="title"
-      [(ngModel)]="newArticle.title"
-      #title="ngModel"
+      [formControl]="title"
       required>
     <p [hidden]="title.valid || title.pristine">Title is required</p>
   </div>
   <div class="field">
     <label for="link">Link:</label>
     <input name="link"
-      #link="ngModel"
-      [(ngModel)]="newArticle.link"
+      [formControl]="link"
       required>
-    <p [hidden]="link.valid || link.pristine">Link is required</p>
+    <p *ngIf="link.hasError('required') && link.touched">Link is required</p>
+    <p *ngIf="link.hasError('invalidLink') && link.dirty">Link is invalid</p>
   </div>
 
-  <!-- added this button -->
   <button class="ui positive right floated button">
     Submit link
   </button>
