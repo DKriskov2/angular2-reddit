@@ -51,6 +51,18 @@ export class AppComponent implements OnInit {
 
     this.title = this.myForm.controls['title'];
     this.link = this.myForm.controls['link'];
+
+    this.title.valueChanges.subscribe(
+      (value: string) => {
+        console.log(value);
+      }
+    );
+
+    this.myForm.valueChanges.subscribe(
+      (form: any) => {
+        console.log(form);
+      }
+    );
   }
 
   addArticle(article): boolean {
