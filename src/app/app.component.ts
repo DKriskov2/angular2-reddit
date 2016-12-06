@@ -10,7 +10,9 @@ import {
 import { Article } from './article/article.model.ts';
 
 function linkValidator(control: FormControl): { [s: string]: boolean } {
-  if (!control.value.match(/(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/)) {
+  if (!control.value) {
+    return null;
+  } else if (!control.value.match(/(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/)) {
     return {invalidLink: true};
   }
 }
