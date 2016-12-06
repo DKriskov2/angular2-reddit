@@ -8,14 +8,16 @@ import { AppComponent } from './app.component';
 import { RedditComponent } from './reddit/reddit.component';
 import { ArticleComponent } from './reddit/article/article.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { routes } from './app.routes';
+import { routes } from './routes/app.routes';
+import { LayoutComponent } from './shared/layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
     TodoListComponent,
-    RedditComponent
+    RedditComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
