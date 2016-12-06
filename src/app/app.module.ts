@@ -10,6 +10,7 @@ import { ArticleComponent } from './reddit/article/article.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { routes } from './routes/app.routes';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LayoutComponent } from './shared/layout/layout.component';
     ArticleComponent,
     TodoListComponent,
     RedditComponent,
-    LayoutComponent
+    LayoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
