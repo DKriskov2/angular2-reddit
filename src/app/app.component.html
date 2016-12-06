@@ -9,7 +9,8 @@
     <input name="title"
       [formControl]="title"
       required>
-    <p [hidden]="title.valid || title.pristine">Title is required</p>
+    <p *ngIf="title.hasError('required') && title.touched">title is required</p>
+    <p *ngIf="title.hasError('maxlength') && title.dirty">title is invalid</p>
   </div>
   <div class="field">
     <label for="link">Link:</label>

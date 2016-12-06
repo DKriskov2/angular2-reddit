@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      title: ['', Validators.required],
+      title: ['', Validators.compose([
+        Validators.required, Validators.maxLength(10)])
+      ],
       link: ['', Validators.compose([
         Validators.required, linkValidator])
       ]
