@@ -1,7 +1,7 @@
 @import './app/vendor/semantic.min.css';
 
 .ui.menu .item img.logo {
-    margin-right: 1.5em;
+    width: 8.5em;
 }
 
 form.ui.segment.form {
