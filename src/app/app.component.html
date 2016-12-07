@@ -21,8 +21,7 @@
     <p [hidden]="link.valid || link.pristine">Link is required</p>
   </div>
 
-  <!-- added this button -->
-  <button class="ui positive right floated button">
+  <button [disabled]="!articleForm.valid" class="ui positive right floated button">
     Submit link
   </button>
 

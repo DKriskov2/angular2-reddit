@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Article } from './article/article.model.ts';
+import { Article } from './article/article.model';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   articles: Article[];
