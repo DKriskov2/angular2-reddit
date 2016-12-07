@@ -14,6 +14,8 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './shared/alert/alert.component';
 
+import { AlertService } from './services/alert/alert.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
