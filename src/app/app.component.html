@@ -21,7 +21,7 @@
     <p *ngIf="link.hasError('invalidLink') && link.dirty">Link is invalid</p>
   </div>
 
-  <button class="ui positive right floated button">
+  <button [disabled]="!myForm.valid" class="ui positive right floated button">
     Submit link
   </button>
 

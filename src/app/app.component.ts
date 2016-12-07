@@ -7,7 +7,7 @@ import {
   FormControl
 } from '@angular/forms';
 
-import { Article } from './article/article.model.ts';
+import { Article } from './article/article.model';
 
 function linkValidator(control: FormControl): { [s: string]: boolean } {
   if (!control.value) {
@@ -19,8 +19,7 @@ function linkValidator(control: FormControl): { [s: string]: boolean } {
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   articles: Article[];
